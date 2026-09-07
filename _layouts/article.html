@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<h1>{{ page.title | default: site.title }}</h1>
+{% if page.date %}<p><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time></p>{% endif %}
+<p><a href="{{ '/index.html' | relative_url }}">首页</a> · <a href="{{ '/archive.html' | relative_url }}">归档</a> · <a href="https://github.com/loader3229/blog/blob/trae/{{ page.path }}">查看markdown</a></p>
+<div id="content">
+{{ content }}
+</div>
