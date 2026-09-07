@@ -5,5 +5,15 @@ description: hello
 ---
 
 <script>if(document.location.href.indexOf("index.html")==-1)document.location.href="/blog/index.html";</script>
-<script>function init(){document.getElementById("content").innerHTML="网站正在建设中。"}setTimeout(init,100);</script>
-<div id="content">正在加载中...</div>
+<style>
+.post-date{color:#586069;margin-left:8px;font-size:0.9em;}
+</style>
+<h2>最新文章</h2>
+<ul>
+{% for post in site.posts %}
+  <li><a href="{{ post.url | relative_url }}">{{ post.title | default: "无标题" }}</a><span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span></li>
+{% else %}
+  <li>暂无文章</li>
+{% endfor %}
+</ul>
+<p><a href="{{ '/archive.html' | relative_url }}">按日期归档</a></p>

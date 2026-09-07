@@ -1,0 +1,21 @@
+---
+layout: default
+title: 归档
+---
+
+<style>
+.post-date{color:#586069;margin-right:8px;font-size:0.9em;}
+</style>
+<h1>归档</h1>
+<p><a href="{{ '/index.html' | relative_url }}">← 返回首页</a></p>
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% for year in posts_by_year %}
+<h2>{{ year.name }}年</h2>
+<ul>
+{% for post in year.items %}
+  <li><span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span><a href="{{ post.url | relative_url }}">{{ post.title | default: "无标题" }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>暂无文章</p>
+{% endfor %}
